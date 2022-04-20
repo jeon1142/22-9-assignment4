@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>비타민 셀렉터 Vitamin Selector</title>
+	<style>
+		@font-face {font-family: 'Pretendard-Regular'; src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff'); font-weight: 400; font-style: normal;}
+		@font-face {font-family: 'Pretendard-Medium'; src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Medium.woff') format('woff'); font-weight: 500; font-style: normal;}
+		@font-face {font-family: 'Pretendard-SemiBold'; src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-SemiBold.woff') format('woff'); font-weight: 600; font-style: normal;}
+		@font-face {font-family: 'Pretendard-ExtraBold'; src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-ExtraBold.woff') format('woff'); font-weight: 800; font-style: normal;}
+		@font-face {font-family: 'Pretendard-Black'; src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Black.woff') format('woff'); font-weight: 900; font-style: normal;}
+		@font-face {font-family: 'GongGothicLight'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10@1.0/GongGothicLight.woff') format('woff'); font-weight: normal; font-style: normal;}
+		@font-face {font-family: 'GongGothicBold'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10@1.0/GongGothicBold.woff') format('woff'); font-weight: normal; font-style: normal;}
+		body, h1, p, ul, h2, h3{margin: 0; padding: 0;}
+		.row{margin: auto; padding: 130px; width: 1000px; text-align: center;}
+		.row-main{margin: auto; padding-top: 100px; width: 1200px; text-align: center; padding-bottom: 130px; background: #f5f519;}
+		.row-footer{margin: auto; padding-top: 50px; padding-bottom: 50px; width: 1200px; text-align: center;}
+		.row-text{margin: auto; padding: 300px; width: 1000px; text-align: center;}
+		.bg-blue{background: #0037ff;} 
+		.bg-yellow{background: #f5f519;}
+		.bg-white{background: #ffffff;}
+		.row-banner{margin: auto; padding-top: 250px; padding-left: 130px; width: 1600px; position: fixed;}
+		.bg-white2{background: url('back.png'); background-size: cover; background-attachment: fixed; position: relative;  z-index: -1;}
+		.bg-white3{background: url('back2.png'); background-size: cover; background-attachment: fixed; position: relative; z-index: -1;}
+		.bg-pink{background: #ff00fe; position: fixed; width: 100%; z-index: 10;}
+		hr {background-color: #ffffff;}
+		.nav{margin: auto; width: 1200px; margin-left: auto; justify-content: right;}
+		.con-1{display: flex; flex-wrap: wrap; gap: 20px 5%;}
+		.con-2{display: flex; flex-wrap: wrap; gap: 20px 5%; justify-content: center; margin-top: 70px;}
+		.con-3{display: flex; flex-wrap: wrap; gap: 20px 5%; margin-top: 100px; margin-bottom: 150px;}
+		.con-4{display: flex; flex-wrap: wrap; gap: 20px 5%; margin-top: 50px;}
+		.con-5{display: flex; flex-wrap: wrap; gap: 20px 5%; margin-top: 70px;}
+		.text-1{background: url(winky.gif) 100px 100px}
+		.child1{width: 35%;}
+		.child2{width: 60%;}
+		.child3{width: 40%;}
+		.child4{width: 55%;}
+		.child5{width: 30%;}
+		.child6{width: 30%; display: inline-block;}
+		.child7{width: 30%; text-align: left;}
+		.img-text1{position: absolute; top: 50%; left: 40%;}
+		footer{display: flex; flex-wrap: wrap; gap: 20px 5%;}
+		.img-text2{position: absolute; top: 50%; left: 41%;}
+		footer{display: flex; flex-wrap: wrap; gap: 20px 5%;}
+		h1{color: #ffffff; font-size: 35pt; margin-bottom: 10px; font-family: 'GongGothicBold';}
+		.h2{color: #f5f519; font-size: 28pt; font-family: 'Pretendard-ExtraBold'; text-decoration-line : none; margin-bottom:}
+		.h2:hover{color: #ff00fe;}
+		.h2-week{color: #f5f519; font-size: 28pt; font-family: 'Pretendard-ExtraBold'; text-align: left; text-decoration-line : none;}
+		.h2-week:hover{color: #ff00fe;}
+		.h2-gift{color: #f5f519; font-size: 28pt; font-family: 'Pretendard-ExtraBold'; text-decoration-line : none;}
+		.h2-gift:hover{color: #ff00fe;}
+		.h2-bonus{color: #f5f519; font-size: 28pt; font-family: 'Pretendard-ExtraBold'; margin-top: 5px; margin-bottom: 20px; text-decoration-line : none;}
+		.h2-bonus2{color: #f5f519; font-size: 28pt; font-family: 'Pretendard-ExtraBold'; text-decoration-line : none;}
+		h3{color: #ffffff; font-family: 'Pretendard-Medium';}
+		.h3-week{text-align: left; margin-bottom: 5px;}
+		.h3-position{margin-bottom: 5px;}
+		.h3-gift{margin-top: 30px;}
+		h4{color: #f5f519; font-size: 20px; font-family: 'Pretendard-SemiBold'; line-height: 50px; margin-top: 20px;}
+		marquee{background-color: #0037ff; height: 50px;}
+		p{color: #ffffff; margin-bottom: 3px; font-family: 'Pretendard-Regular';}
+		.p-blue{font-family: 'Pretendard-ExtraBold'; color: #0037ff; padding-left: 5px; margin-bottom: 5px; font-size: 15pt;}
+		.p-what{font-size: 13pt;}
+		.p-job{margin-top: 10px;}
+		.p-week{text-align: left; margin-bottom: 10px; font-weight: light;}
+		.p-gift{margin-top: 6px; margin-bottom: 15px;}
+		.p-bonus{margin-bottom: 70px;}
+		.p-bonus2{margin-top: 6px; margin-bottom: 5px;}
+		.p-footer{color: #0037ff; margin-top: 5px; opacity: 70%; font-size: 15px;}
+		.p-footer2{color: #0037ff; margin-top: -5px; font-size: 19.5px;}
+		.p-text{color: #0037ff; text-align: center; font-family: 'Pretendard-Medium'; font-size: 15pt;}
+		.p-text2{color: #0037ff; text-align: center; font-family: 'Pretendard-Medium'; font-size: 15pt; margin-top: 10px;}
+		.text
+		nav{position: fixed; z-index: 3;}
+
+		.nav-1{display: inline-block; width: 150px; text-align: center; line-height: 50px; font-weight: bold; color: #ffffff; text-decoration-line : none; font-family: 'GongGothicLight';}
+		.nav-1:hover{background: #0037ff; box-shadow: none; color: white; transition: all 0.4s; text-decoration-line : none;}
+		.nav-2{display: inline-block; background: #0037ff; width: 150px; height: 50px; text-align: center; line-height: 50px; font-weight: bold; color: #ffffff; text-decoration-line : none; margin-top: 35px; margin-left: 30px; font-family: 'GongGothicLight';}
+		.nav-3{display: inline-block; width: 580px; text-align: center; line-height: 45px; color: #ffffff; text-align: left; font-size: 20pt; text-decoration-line : none; font-family: 'GongGothicBold';}
+		.nav-4{display: inline-block; width: 580px; height: 50px; text-align: center; line-height: 39px; color: #0037ff; text-align: left; font-size: 20pt; text-decoration-line : none; font-family: 'GongGothicBold';}
+		table{color: #0037ff; table-layout: fixed; margin-top: 100px; margin-bottom: 100px;}
+		th{font-family: 'Pretendard-Regular';}
+		td{font-size: 18pt; font-family: 'Pretendard-SemiBold';}
+		hr{margin-bottom: 20px;}
+		.click{width: 100px; position: absolute; left: 280px; top: 2530px; z-index: 1;}
+		.boss{transition: all 0.2s linear;}
+		.boss:hover{transform: scale(1.1);}
+		.face1:hover{animation: shake1 10s; animation-iteration-count: infinite;}
+		@keyframes shake1{0%{transform: translate(1px, 1px) rotate(0deg);} 10%{ transform: translate(-1px, -2px) rotate(-1deg); } 20%{transform: translate(-3px, 0px) rotate(1deg);} 30%{transform: translate(3px, 2px) rotate(0deg);} 40%{transform: translate(1px, -1px) rotate(1deg); } 50%{transform: translate(-1px, 2px) rotate(-1deg);} 60%{transform: translate(-3px, 1px) rotate(0deg);} 70% {transform: translate(3px, 1px) rotate(-1deg);} 80% {transform: translate(-1px, -1px) rotate(1deg); } 90%{transform: translate(1px, 2px) rotate(0deg);} 100%{transform: translate(1px, -2px) rotate(-1deg);}}
+		.face2:hover{animation: shake2 2s; animation-iteration-count: infinite;}
+		@keyframes shake2{0%{transform: translate(1px, 1px) rotate(0deg);} 10%{ transform: translate(-1px, -2px) rotate(-1deg); } 20%{transform: translate(-3px, 0px) rotate(1deg);} 30%{transform: translate(3px, 2px) rotate(0deg);} 40%{transform: translate(1px, -1px) rotate(1deg); } 50%{transform: translate(-1px, 2px) rotate(-1deg);} 60%{transform: translate(-3px, 1px) rotate(0deg);} 70% {transform: translate(3px, 1px) rotate(-1deg);} 80% {transform: translate(-1px, -1px) rotate(1deg); } 90%{transform: translate(1px, 2px) rotate(0deg);} 100%{transform: translate(1px, -2px) rotate(-1deg);}}
+		.face3:hover{animation: shake3 0.5s; animation-iteration-count: infinite;}
+		@keyframes shake3{0%{transform: translate(1px, 1px) rotate(0deg);} 10%{ transform: translate(-1px, -2px) rotate(-1deg); } 20%{transform: translate(-3px, 0px) rotate(1deg);} 30%{transform: translate(3px, 2px) rotate(0deg);} 40%{transform: translate(1px, -1px) rotate(1deg); } 50%{transform: translate(-1px, 2px) rotate(-1deg);} 60%{transform: translate(-3px, 1px) rotate(0deg);} 70% {transform: translate(3px, 1px) rotate(-1deg);} 80% {transform: translate(-1px, -1px) rotate(1deg); } 90%{transform: translate(1px, 2px) rotate(0deg);} 100%{transform: translate(1px, -2px) rotate(-1deg);}}
+		.face4:hover{animation: shake4 0.2s; animation-iteration-count: infinite;}
+		@keyframes shake4{0%{transform: translate(1px, 1px) rotate(0deg);} 10%{ transform: translate(-2px, -3px) rotate(-1deg); } 20%{transform: translate(-5px, 0px) rotate(1deg);} 30%{transform: translate(4px, 3px) rotate(0deg);} 40%{transform: translate(1px, -1px) rotate(1deg); } 50%{transform: translate(-2px, 3px) rotate(-1deg);} 60%{transform: translate(-3px, 1px) rotate(0deg);} 70% {transform: translate(3px, 1px) rotate(-1deg);} 80% {transform: translate(-1px, -1px) rotate(1deg); } 90%{transform: translate(1px, 2px) rotate(0deg);} 100%{transform: translate(1px, -2px) rotate(-1deg);}}
+		.face5:hover{animation: shake5 0.01s; animation-iteration-count: infinite;}
+		@keyframes shake5{0%{transform: translate(1px, 1px) rotate(3deg);} 10%{ transform: translate(-2px, -3px) rotate(-3deg); } 20%{transform: translate(-5px, 0px) rotate(1deg);} 30%{transform: translate(4px, 3px) rotate(0deg);} 40%{transform: translate(1px, -1px) rotate(2deg); } 50%{transform: translate(-2px, 3px) rotate(-1deg);} 60%{transform: translate(-3px, 1px) rotate(-1deg);} 70% {transform: translate(3px, 1px) rotate(-3deg);} 80% {transform: translate(-1px, -1px) rotate(3deg); } 90%{transform: translate(1px, 2px) rotate(0deg);} 100%{transform: translate(1px, -2px) rotate(-1deg);}}
+	</style>
+</head>
+<body>
+	<section class="bg-pink">
+			<div class="nav" style="display: flex;">
+				<nav>
+					<a class="nav-3" href="#srl-top" style="font-family: 'GongGothicBold';">Vitamin Selector</a>
+					<a class="nav-1" href="#srl-position" style="font-family: 'GongGothicLight';">Position</a>
+					<a class="nav-1" href="#srl-schedule" style="font-family: 'GongGothicLight';">Schedule</a>
+			 		<a class="nav-1" href="#srl-gift" style="font-family: 'GongGothicLight';">Gift</a>
+			  		<a class="nav-1" href="#srl-bonus" style="font-family: 'GongGothicLight';">Bonus</a>
+				</nav>
+			</div>
+	</section>
+	<section class="bg-yellow" id="srl-top">
+		<!-- <img src="miniv.gif" width="1920px" style="padding-top: 200px;"> -->
+		<div class="row-main">
+				<div class="con-4">
+					<div class="child1">
+						<br>
+						<br>
+						<p class="p-blue" align="left" style="font-family: 'Pretendard-Regular';">직장인을 위한 비타민 추천 사이트</p>
+						<img src="vitamin_selector.png" width="430px" align="left">
+						<img src="three.gif" width="440px" style="margin-top: 263px;">
+					</div>
+					<div class="child2">
+						<img src="v.gif" width="730px" align="right">
+					</div>
+				</div>
+			<h4 style="font-family: 'Pretendard-SemiBold';"><marquee behavior = "alternate" loop = "-1" scrolldelay="60">☆★☆ 직장인의, 직장인에 의한, 직장인을 위한 비타민 추천 사이트 ☆★☆</marquee> </h4>
+		</div>
+	</section>
+	<section class="bg-blue">
+		<div class="row">	
+			<div class="con-1">
+				<div class="child4">
+					<img src="joongdok.png" width="500px">
+				</div>
+				<div class="child3" align="left" style="padding-top: 100px;">
+					<img src="what.png" width="400px" style="margin-bottom: 20px">
+					<p class="p-what" style="font-family: 'Pretendard-Regular';">비타민 셀렉터는 회사생활에 지친 직장인을 위한</p>
+					<p class="p-what" style="font-family: 'Pretendard-Regular';">비타민 추천 사이트입니다.</p>
+					<br>
+					<p class="p-what" style="font-family: 'Pretendard-Regular';">직장인의, 직장인에 의한, 직장인을 위한</p>
+					<p class="p-what" style="font-family: 'Pretendard-Regular';">다양한 서비스를 즐겨보세요!</p>
+				</div>
+			</div>		
+		</div>
+	</section>
+	<section class="bg-white">
+		<div class="row">		
+				<img src="help.png" width="400px">
+				<br>
+				<a class="nav-2" href="#srl-position" style="font-family: 'GongGothicLight';">Position</a>
+				<a class="nav-2" href="#srl-schedule" style="font-family: 'GongGothicLight';">Schedule</a>
+			 	<a class="nav-2" href="#srl-gift" style="font-family: 'GongGothicLight';">Gift</a>
+			  	<a class="nav-2" href="#srl-bonus" style="font-family: 'GongGothicLight';">Bonus</a>	
+		</div>
+	</section>
+	<section class="bg-blue" id="srl-position">
+		<div class="row">	
+			<div class="position">
+				<h1 style="font-family: 'GongGothicBold';">Job Position</h1>
+				<p style="font-family: 'Pretendard-Regular';">내 직급에 복용하기 알맞은 비타민은 어떤걸까?</p>
+				<p style="font-family: 'Pretendard-Regular';">직급별 간단한 비타민 추천 리스트입니다!</p>
+				<img src="click.gif" class="click">
+					<div class="con-3">
+						<div class="child3" align="left" style="padding-top: 70px;">
+							<h3 class="h3-position" style="font-family: 'Pretendard-Medium';">신입사원&대리</h3>
+							<a class="h2" href="https://www.coupang.com/np/search?component=&q=%EB%B9%84%ED%83%80%EB%AF%BCb%EA%B5%B0+%EB%A7%88%EA%B7%B8%EB%84%A4%EC%8A%98&channel=user" target="_blank" style="font-family: 'Pretendard-ExtraBold';">비타민B군, 마그네슘</a>
+							<br>
+							<p class="p-job" style="font-family: 'Pretendard-Regular';">에너지를 많이 생각하고 소모하는 시기이므로</p>
+							<p class="font-family: 'Pretendard-Regular';">피로회복이 중요합니다!</p>
+						</div>
+						<div class="child4">
+							<img src="position1.png" width="550px">
+						</div>
+					</div>
+					<div class="con-3">	
+						<div class="child4">
+							<img src="position2.png" width="550px">
+						</div>
+						<div class="child3" align="right" style="padding-top: 120px;">
+							<h3 class="h3-position" style="font-family: 'Pretendard-Medium';">과장&차장</h3>
+							<a class="h2" href="https://www.coupang.com/np/search?component=&q=%EC%98%A4%EB%A9%94%EA%B0%803%2C+%EB%B9%84%ED%83%80%EB%AF%BCC&channel=user" target="_blank" style="font-family: 'Pretendard-ExtraBold';">오메가3, 비타민C</a>
+							<br>
+							<p class="p-job" style="font-family: 'Pretendard-Regular';">여러 직병의 발병 확률이 급격히 높아지는 시기이므로</p>
+							<p style="font-family: 'Pretendard-Regular';">면역력 강화가 필요합니다!</p>
+						</div>
+					</div>
+					<div class="con-3">	
+						<div class="child3" align="left" style="padding-top: 70px;">
+							<h3 class="h3-position" style="font-family: 'Pretendard-Medium';">부장&임원</h3>
+							<a class="h2" href="https://www.coupang.com/np/search?component=&q=%ED%81%B4%EB%A1%9C%EB%A0%90%EB%9D%BC%2C+%EC%98%A4%EB%A9%94%EA%B0%803%EC%A7%80%EB%B0%A9%EC%82%B0&channel=user" target="_blank" style="font-family: 'Pretendard-ExtraBold';">클로렐라, 오메가3지방산</a>
+							<br>
+							<p class="p-job" style="font-family: 'Pretendard-Regular';">노화 방지가 필요하며 신체 내에서 만들지 못하는</p>
+							<p style="font-family: 'Pretendard-Regular';">영양소를 섭취하는 것이 필수입니다!</p>
+						</div>
+						<div class="child4">
+							<img src="position3.png" width="550px">
+						</div>
+					</div>
+			</div>		
+		</div>
+	</section>
+	<section class="bg-white3">
+		<div class="row-text">		
+			<img src="text1.png" width="550px">	
+		</div>
+		<div class="img-text1">
+			<p class="p-text" style="font-family: 'Pretendard-Regular';">더 구체적인 처방을 받고 싶다구요?</p>
+			<br>
+			<p class="p-text" style="font-family: 'Pretendard-Regular';">그런 직장인 분들을 위해 설계된 서비스가</p>
+			<p class="p-text" style="font-family: 'Pretendard-Regular';">하단에 준비되어 있습니다!</p>
+		</div>
+	</section>
+	<section class="bg-blue" id="srl-schedule">
+		<div class="row">
+			<div class="schedule">
+				<h1 style="font-family: 'GongGothicBold';">A Week's Schedule</h1>
+				<p style="font-family: 'Pretendard-Regular';">일주일동안 회사에서 겪었던 일들을 모두 말해주세요</p>
+				<p style="font-family: 'Pretendard-Regular';">당신의 상태를 분석해 알맞은 비타민을 추천해드립니다!</p>
+					<table width="1000px" align="center">
+						<th bgcolor="#f5f519" height="30px" style="font-family: 'Pretendard-Regular';">Monday</th>
+						<th bgcolor="#f5f519" style="font-family: 'Pretendard-Regular';">Tusday</th>
+						<th bgcolor="#f5f519" style="font-family: 'Pretendard-Regular';">Wednesday</th>
+						<th bgcolor="#f5f519" style="font-family: 'Pretendard-Regular';">Thursday</th>
+						<th bgcolor="#f5f519" style="font-family: 'Pretendard-Regular';">Friday</th>
+						<th bgcolor="#f5f519" style="font-family: 'Pretendard-Regular';">Saturday</th>
+						<th bgcolor="#f5f519" style="font-family: 'Pretendard-Regular';">Sunday</th>
+						<tr>
+							<td bgcolor="#ffffff" height="110px" style="font-family: 'Pretendard-SemiBold';">스트레스</td>
+							<td bgcolor="#ffffff" style="font-family: 'Pretendard-SemiBold';">수면부족</td>
+							<td bgcolor="#ffffff" style="font-family: 'Pretendard-SemiBold';">안구건조</td>
+							<td bgcolor="#ffffff" style="font-family: 'Pretendard-SemiBold';">만성피로</td>
+							<td bgcolor="#ffffff" style="font-family: 'Pretendard-SemiBold';">독성해소</td>
+							<td bgcolor="#ffffff" style="font-family: 'Pretendard-SemiBold';">강한위염</td>
+							<td bgcolor="#ffffff" style="font-family: 'Pretendard-SemiBold';">우울증ㅠ</td>
+						</tr>
+					</table>
+				<div class="con-1">
+						<div class="child4">
+							<img src="gaebi.png" width="550px">
+						</div>
+						<div class="child3" align="left">
+							<h3 class="h3-week" style="font-family: 'Pretendard-Medium';">월요일: 스트레스</h3>
+							<p class="p-week" style="font-family: 'Pretendard-Regular';">일주일의 시작, 오늘도 지긋지긋한 출근을 하네요</p>
+							<a class="h2-week" href="https://www.coupang.com/np/search?component=&q=%EB%A7%88%EA%B7%B8%EB%84%A4%EC%8A%98%2B%EC%B9%BC%EC%8A%98&channel=user" target="_blank" style="font-family: 'Pretendard-ExtraBold';">마그네슘+칼슘</a>
+							<hr>
+							<h3 class="h3-week" style="font-family: 'Pretendard-Medium';">화요일: 수면부족</h3>
+							<p class="p-week" style="font-family: 'Pretendard-Regular';">늦은 시간 퇴근 후 핸드폰을 새벽가지 봤더니 졸려요</p>
+							<a class="h2-week" href="https://www.coupang.com/np/search?component=&q=L-%ED%85%8C%EC%95%84%EB%8B%8C+%EC%A2%85%ED%95%A9%EB%B9%84%ED%83%80%EB%AF%BC&channel=user" target="_blank" style="font-family: 'Pretendard-ExtraBold';">L-테아닌+종합비타민</a>
+							<hr>
+							<h3 class="h3-week" style="font-family: 'Pretendard-Medium';">수요일: 안구건조</h3>
+							<p class="p-week" style="font-family: 'Pretendard-Regular';">하루종일 컴퓨터 앞에 앉아 있으니 눈이 너무 건조해요</p>
+							<a class="h2-week" href="https://www.coupang.com/np/search?component=&q=%EC%9D%B4%EB%B8%8C%EB%9D%BC%EC%9D%B4%ED%8A%B8&channel=user" target="_blank" style="font-family: 'Pretendard-ExtraBold';">이브라이트</a>
+							<hr>
+							<h3 class="h3-week" style="font-family: 'Pretendard-Medium';">목요일: 만성피로</h3>
+							<p class="p-week" style="font-family: 'Pretendard-Regular';">일주일 중 피로가 가장 쌓인 고비가 찾아왔어요</p>
+							<a class="h2-week" href="https://www.coupang.com/np/search?component=&q=%EC%A2%85%ED%95%A9%EB%B9%84%ED%83%80%EB%AF%BC+%EB%B2%A4%ED%8F%AC%ED%8B%B0%EC%95%84%EB%AF%BC&channel=user" target="_blank" style="font-family: 'Pretendard-ExtraBold';">종합비타민+벤포티아민</a>
+							<hr>
+							<h3 class="h3-week" style="font-family: 'Pretendard-Medium';">금요일: 독성해소</h3>
+							<p class="p-week" style="font-family: 'Pretendard-Regular';">집에서 쉬고 싶은데 부장님이 회식가재요</p>
+							<a class="h2-week" href="https://www.coupang.com/np/search?component=&q=%EC%8B%A4%EB%A6%AC%EB%A7%88%EB%A6%B0&channel=user" target="_blank" style="font-family: 'Pretendard-ExtraBold';">실리마린</a>
+							<hr>
+							<h3 class="h3-week" style="font-family: 'Pretendard-Medium';">토요일: 강한위염</h3>
+							<p class="p-week" style="font-family: 'Pretendard-Regular';">스트레스 때문에 매운음식을 먹었더니 위염이 도졌어요</p>
+							<a class="h2-week" href="https://www.coupang.com/np/search?component=&q=%EB%A7%A4%EC%8A%A4%ED%8B%B1%EC%BB%B4%2C+DGL&channel=user" target="_blank" style="font-family: 'Pretendard-ExtraBold';">매스틱컴, DGL</a>
+							<hr>
+							<h3 class="h3-week" style="font-family: 'Pretendard-Medium';">일요일: 우울증ㅠ</h3>
+							<p class="p-week" style="font-family: 'Pretendard-Regular';">내일이면 끔찍한 월요일이 돌아와요 살려주세요</p>
+							<a class="h2-week" href="https://www.coupang.com/np/search?component=&q=%EC%A2%85%ED%95%A9%EB%B9%84%ED%83%80%EB%AF%BC+%ED%8A%B8%EB%A6%BD%ED%86%A0%ED%8C%90&channel=user" target="_blank" style="font-family: 'Pretendard-ExtraBold';">종합비타민+트립토판</a>
+						</div>
+					<img src="text2.png" width="1000px" style="margin-top: 150px; margin-bottom: 100px;">
+			</div>			
+		</div>
+	</section>
+	<section class="bg-white">
+		<div class="row">		
+			<img src="aha.gif" width="800px" align="left" style="margin-bottom: 250px; margin-top: 100px;">
+			<br>
+			<img src="hmm.gif" width="1000px" style="margin-bottom: 100px;">
+			</div>	
+		</div>
+	</section>
+	<section class="bg-blue" id="srl-gift">
+		<div class="row">	
+			<div class="gift">
+				<h1 style="font-family: 'GongGothicBold';">Gift for Boss</h1>
+				<p style="font-family: 'Pretendard-Regular';">그동안 나를 괴롭게 만든 직장 상사에게 사랑의 비타민을 선물해보세요!</p>
+				<div class="con-5">
+					<div class="child5">
+						<img src="gift1.png" class="boss" width="300px" style="display: block; margin:auto;">
+						<h3 class="h3-gift" style="font-family: 'Pretendard-Medium';">매일 잔소리하는 대머리 상사</h3>
+						<p class="p-gift" style="font-family: 'Pretendard-Regular';">반짝반짝 두피두피 자라나라 머리머리</p>
+						<a class="h2-gift" href="https://www.coupang.com/np/search?component=&q=%EB%B9%84%EC%98%A4%ED%8B%B4+%EC%A2%85%ED%95%A9%EB%B9%84%ED%83%80%EB%AF%BC&channel=user" target="_blank" style="font-family: 'Pretendard-ExtraBold';">비오틴+종합비타민</a>
+					</div>
+					<div class="child5">
+						<img src="gift2.png" class="boss" width="300px" style="display: block; margin:auto;">
+						<h3 class="h3-gift" style="font-family: 'Pretendard-Medium';">우리부서 뿡뿡이 상사</h3>
+						<p class="p-gift" style="font-family: 'Pretendard-Regular';">3보1뿡 걸어다니는 화생방</p>
+						<a class="h2-gift" href="https://www.coupang.com/np/search?component=&q=%EB%B9%84%ED%83%80%EB%AF%BCC+%EB%A9%94%EA%B0%80%EB%8F%84%EC%8A%A4&channel=user" target="_blank" style="font-family: 'Pretendard-ExtraBold';">비타민C 메가도스</a>
+					</div>
+					<div class="child5">
+						<img src="gift3.png" class="boss" width="300px" style="display: block; margin:auto;">
+						<h3 class="h3-gift" style="font-family: 'Pretendard-Medium';">22pt 서류 제대로 안읽는 상사</h3>
+						<p class="p-gift" style="font-family: 'Pretendard-Regular';">삐까번쩍한 안경을 썼어요 근데 렌즈는 없는</p>
+						<a class="h2-gift" href="https://www.coupang.com/np/search?component=&q=%EC%95%84%EC%8A%A4%ED%83%80%EC%9E%94%ED%8B%B4&channel=user" target="_blank" style="font-family: 'Pretendard-ExtraBold';">아스타잔틴</a>
+					</div>
+				</div>
+				<img src="good.png" width="1000px" style="margin-bottom: 50px; margin-top: 150px;">	
+			</div>		
+		</div>
+	</section>
+	<section class="bg-white">
+		<div class="row">	
+			<img src="wait.png" width="600px" style="margin-bottom: 20px">
+			<p class="p-text" style="font-family: 'Pretendard-Regular';">전문적인 비타민 없이 철야를 해야하는 직장인을 위한 구역입니다!</p>
+			<p class="p-text2" style="font-family: 'Pretendard-Regular';">야매 비타민 포션의 효과는 뛰어나나, 부작용이 발생할 수 있으니 주의하세요!</p>
+		</div>
+	</section>
+	<section class="bg-blue" id="srl-bonus">
+		<div class="row">	
+			<div class="bonus">
+				<h1 style="font-family: 'GongGothicBold';">Bonus Zone</h1>
+				<p style="font-family: 'Pretendard-Regular';">바로, 지금, 당장, 나우, 먹을 수 있는 야매 비타민 포션 제조법입니다</p>
+				<div class="con-2">
+					<div class="child6">
+						<img src="face1.png" class="face1" width="300px" style="display: block; margin: auto;">
+						<h3 class="h3-gift" style="font-family: 'Pretendard-Medium';">폭주 1.5배</h3>
+						<h2 class="h2-bonus" style="font-family: 'Pretendard-ExtraBold';">(박카스+레모나)2</h2>
+						<p class="p-bonus" style="font-family: 'Pretendard-Regular';">가장 일반적인 포션이며 폭주 후 데미지 2배</p>
+					</div>
+					<div class="child6">
+						<img src="face2.png" class="face2" width="300px" style="display: block; margin: auto;">
+						<h3 class="h3-gift" style="font-family: 'Pretendard-Medium';">폭주 2배</h3>
+						<h2 class="h2-bonus" style="font-family: 'Pretendard-ExtraBold';">박카스2+포카리</h2>
+						<p class="p-bonus" style="font-family: 'Pretendard-Regular';">효과가 가장 좋으나 폭주 후 데미지 3배</p>
+					</div>
+				</div>
+				<br>
+				<div class="con-1">
+					<div class="child5">
+						<img src="face3.png" class="face3" width="300px" style="display: block; margin: auto;">
+						<h3 class="h3-gift" style="font-family: 'Pretendard-Medium';">폭주 3배</h3>
+						<h2 class="h2-bonus2" style="font-family: 'Pretendard-ExtraBold';">박카스+원비디</h2>
+						<h2 class="h2-bonus" style="font-family: 'Pretendard-ExtraBold';">+레모나3</h2>
+						<p class="p-bonus2" style="font-family: 'Pretendard-Regular';">데미지는 적은 편이나, 제대로 된 사용은</p>
+						<p class="p-bonus" style="font-family: 'Pretendard-Regular';">위 포션에 가루커피 한 잔을 타먹어야...</p>
+					</div>
+					<div class="child5">
+						<img src="face4.png" class="face4" width="300px" style="display: block; margin: auto;">
+						<h3 class="h3-gift" style="font-family: 'Pretendard-Medium';">폭주 3.5배</h3>
+						<h2 class="h2-bonus2" style="font-family: 'Pretendard-ExtraBold';">박카스2+레모나3</h2>
+						<h2 class="h2-bonus" style="font-family: 'Pretendard-ExtraBold';">+포카리</h2>
+						<p class="p-bonus2" style="font-family: 'Pretendard-Regular';">폭주 후 데미지 6배 이상</p>
+						<p class="p-bonus" style="font-family: 'Pretendard-Regular';">거의 빈사 상태와 다름없음</p>
+					</div>
+					<div class="child5">
+						<img src="face5.png" class="face5" width="300px" style="display: block; margin: auto;">
+						<h3 class="h3-gift" style="font-family: 'Pretendard-Medium';">????</h3>
+						<h2 class="h2-bonus2" style="font-family: 'Pretendard-ExtraBold';">홍삼+박카스</h2>
+						<h2 class="h2-bonus" style="font-family: 'Pretendard-ExtraBold';">+레모나+박하액</h2>
+						<p class="p-bonus2" style="font-family: 'Pretendard-Regular';">효과는 무난하나 부작용이 거의 없는</p>
+						<p class="p-bonus" style="font-family: 'Pretendard-Regular';">미스테리한 포션</p>
+					</div>
+					<img src="warning.png" style="display: block; margin: auto; margin-top: 50px">
+				</div>
+			</div>		
+		</div>
+	</section>
+	<section class="bg-white2">
+		<div class="row">		
+			<div class="text-4">
+				<img src="text3.png" width="550px" style="margin: 100px;">	
+			</div>
+			<div class="img-text2">
+			<p class="p-text" style="font-family: 'Pretendard-Regular';">직장 생활이 버거울 땐</p>
+			<p class="p-text" style="font-family: 'Pretendard-Regular';">언제든 비타민 셀렉터를 찾아주세요</p>
+			<br>
+			<p class="p-text" style="font-family: 'Pretendard-Regular';">저희는 항상 당신과 함께 있습니다</p>
+		</div>
+		</div>
+	</section>
+	<section class="bg-yellow">
+		<div class="row-footer">	
+			<footer>
+				<div class="child7">
+					<a class="nav-4" style="font-family: 'GongGothicBold';"> Vitamin Selector </a>
+					<p class="p-footer2" style="font-family: 'Pretendard-Regular';">직장인을 위한 비타민 추천 사이트</p>
+				</div>
+				<div class="child7">
+					<p class="p-footer" style="font-family: 'Pretendard-Regular';">(주)비타민컴퍼니</p>
+					<p class="p-footer" style="font-family: 'Pretendard-Regular';">주소 서울특별시 노원구 공릉로 232</p>
+					<p class="p-footer" style="font-family: 'Pretendard-Regular';">대표 김아무개</p>
+					<p class="p-footer" style="font-family: 'Pretendard-Regular';">전화 010-8282-8282</p>
+				</div>
+				<div class="child7">
+					<p class="p-footer" style="font-family: 'Pretendard-Regular';">2022-1</p>
+					<p class="p-footer" style="font-family: 'Pretendard-Regular';">Visual Communication Design</p>
+					<p class="p-footer" style="font-family: 'Pretendard-Regular';">Web Interface Design</p>
+					<p class="p-footer" style="font-family: 'Pretendard-Regular';">© 2022. JeonEunbin Co. all rights reserved.</p>
+				</div>
+			</footer>	
+		</div>
+	</section>
+</body>
+</html>
